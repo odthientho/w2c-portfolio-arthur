@@ -4,13 +4,13 @@
     --header-color: #1b242f;
     --nav-color:  #5b5f64;
     --hightlight-color: #e31b6d;
-    --body-color: #fff;
-    --text-color: #fff;
+    --text-body-color: black;
+    --text-header-color: #fff;
 }
 
 body {
     background-color: var(--body-color);
-    color: var(--text-color);
+    color: var(--text-body-color);
     min-width: 300px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -19,12 +19,15 @@ header {
     position: fixed;     
     top: 0;   
     background-color: var(--header-color);
+    color: var(--text-header-color);
     width: 100%;
 
     border-bottom: 3px;
     border-bottom-style: solid;
     height: var(--header-height);
     border-bottom-color: #04c2c9;
+
+    z-index: 1;
 }
 
 header h1 {
@@ -73,10 +76,75 @@ main {
     position: relative;
     width: 100%;
     top: 165px;
+    text-align: center;
+    
+    z-index: 0;
 }
 
 #about {
-    color: black;
+    color: var(--nav-color);
+    margin: 50px 0 75px 0;
+}
+
+#about img {
+    width: 300px;
+    height: auto;
+}
+
+.section-header h1 {
+    font-size: 200%;
+    font-weight: bolder;
+
+}
+
+.section-header .underline-header {
+    margin: 10px auto;
+    border-bottom: 5px;
+    border-style: solid;
+    width: 50px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.about-me li {
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+.about-me {
+    margin-top: 10px;
+}
+
+.about-me h2 {
+    font-weight: bold;
+    font-size: 180%;
+    margin: 0 0 30px 0;
+}
+
+.about-me h3 {
+    font-weight: bold;
+    margin: 25px 0 5px 0;
+}
+
+.hexagon {
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+}
+
+@media screen and (min-width: 800px) {
+    .about-me {
+        margin-left: 30px;
+        margin-top: 0;
+    }
+
+    .flex-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }
 
 @media screen and (min-width: 450px) {
@@ -103,6 +171,7 @@ main {
     header h1 {
         visibility: hidden;
     }
+
     main {
         width: 80%;
         left: 10%;
