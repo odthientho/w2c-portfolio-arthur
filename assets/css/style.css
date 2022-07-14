@@ -1,0 +1,111 @@
+:root {
+    --header-height: 45px;
+    --nav-position: 48px; 
+    --header-color: #1b242f;
+    --nav-color:  #5b5f64;
+    --hightlight-color: #e31b6d;
+    --body-color: #fff;
+    --text-color: #fff;
+}
+
+body {
+    background-color: var(--body-color);
+    color: var(--text-color);
+    min-width: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    position: fixed;     
+    top: 0;   
+    background-color: var(--header-color);
+    width: 100%;
+
+    border-bottom: 3px;
+    border-bottom-style: solid;
+    height: var(--header-height);
+    border-bottom-color: #04c2c9;
+}
+
+header h1 {
+    position: absolute;
+    width: 100%;
+    top: 10px;
+
+    font-size: 130%;
+    padding-left: 10px;
+}
+
+header nav {
+    position: absolute;
+    width: 100%;
+}
+
+header nav ul {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+
+    position: relative;
+    top: var(--nav-position);
+    background-color: var(--nav-color);
+}
+
+header .nav-listing-button {
+    position: relative;
+    font-size: 150%;
+    top: 10px;
+    left: 90%;
+}
+
+header nav ul li {
+    list-style-type: none;
+    padding: 10px;
+    font-size: 120%;
+}
+
+header nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+main {
+    position: relative;
+    width: 100%;
+    top: 165px;
+}
+
+#about {
+    color: black;
+}
+
+@media screen and (min-width: 450px) {
+    header nav {
+        position: relative;
+    }
+
+    header nav ul {
+        display: flex;
+        flex-flow: row;
+        top: 0;
+        background-color: var(--header-color);
+        visibility: visible;
+    }
+
+    header nav ul li {
+        list-style-type: none;
+    }
+    
+    header .nav-listing-button {
+        visibility: hidden;
+    }
+    
+    header h1 {
+        visibility: hidden;
+    }
+    main {
+        width: 80%;
+        left: 10%;
+        top: var(--nav-position);
+    }
+}
