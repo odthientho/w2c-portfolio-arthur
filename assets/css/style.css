@@ -1,65 +1,70 @@
-
+/* SET SOME GLOBAL VARIABLES */
 :root {
-    --header-height: 45px;
-    --nav-position: 48px; 
-    --header-color: #1b242f;
-    --nav-color:  #5b5f64;
-    --hightlight-color: #e31b6d;
-    --text-body-color: black;
-    --text-header-color: #fff;
+    --dark-background-color: #1b242f;
+    --grey-background-color:  #5b5f64;
+    --light-background-color: #f5f5f5;
+    --white-background-color: #fff;
+
+    --bright-text-color: #fff;
+    --dark-text-color:  #5b5f64;
+    
+    --hightlight-color-1: #e31b6d;
+    --hightlight-color-2: #04c2c9;
 }
 
+/* BODY SELECTORS */
 body {
-    background-color: var(--body-color);
-    color: var(--text-body-color);
     min-width: 300px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* SET HEADER */
 header {
-    position: fixed;     
-    top: 0;   
-    background-color: var(--header-color);
-    color: var(--text-header-color);
+    position: fixed;
     width: 100%;
+    height: 45px;
+    top: 0;
+
+    background-color: var(--dark-background-color);
+    color: var(--bright-text-color);
 
     border-bottom: 3px;
     border-bottom-style: solid;
-    height: var(--header-height);
-    border-bottom-color: #04c2c9;
+    border-bottom-color: var(--hightlight-color-2);
 
-    z-index: 10;
+    z-index: 10; /* Always on top of Body*/
 }
 
 header h1 {
     position: absolute;
-    width: 100%;
     top: 10px;
+    left: 10px;
 
-    font-size: 130%;
-    padding-left: 10px;
+    font-size: 150%;
+}
+
+header .nav-listing-button {
+    position: absolute;
+    top: 10px;
+    left: 90%;
+    
+    font-size: 150%;
 }
 
 header nav {
     position: absolute;
+    top: 48px;
     width: 100%;
 }
 
 header nav ul {
+    position: relative;
+
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
 
-    position: relative;
-    top: var(--nav-position);
-    background-color: var(--nav-color);
-}
-
-header .nav-listing-button {
-    position: relative;
-    font-size: 150%;
-    top: 10px;
-    left: 90%;
+    background-color: var(--grey-background-color);
 }
 
 header nav ul li {
@@ -69,27 +74,27 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: var(--text-color);
+    color: var(--bright-text-color);
     text-decoration: none;
 }
 
+/* SET MAIN CONTENT */
 main {
     position: relative;
+    top: 165px; /* will need to change this property properly for future modifications */
     width: 100%;
-    top: 165px;
+
     text-align: center;
     
-    z-index: 0;
+    z-index: 0; /* set main always below header*/
 }
 
-#about {
-    color: var(--nav-color);
-    padding: 50px 0 75px 0;
-}
-
-#about img {
-    width: 280px;
-    height: auto;
+/* ABOUT, PROJECTS, CONTACT SECTIONS */
+/* General Setups */
+main section {
+    position: relative;
+    color: var(--dark-text-color);
+    padding: 50px 0 50px 0;
 }
 
 .section-header h1 {
@@ -104,20 +109,30 @@ main {
     width: 50px;
 }
 
-.flex-about, 
-.flex-projects {
+/* SECTION: ABOUT */
+#about {
+    background-color: var(--white-background-color);
+    color: var(--dark-text-color);
+}
+
+#about img {
+    width: 280px;
+    height: auto;
+}
+
+.flex-about {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.about-me li {
-    font-family: 'Courier New', Courier, monospace; 
-}
-
 .about-me {
     margin-top: 10px;
+}
+
+.about-me li {
+    font-family: 'Courier New', Courier, monospace; 
 }
 
 .about-me h2 {
@@ -136,81 +151,19 @@ main {
     clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
+/* SECTION: PROJECTS */
 #projects {
-    color: var(--nav-color);
-    background-color: #f5f5f5;
-    padding: 50px 0 75px 0;
+    background-color: var(--light-background-color);
 }
 
-.project {
-    position: relative;
-    width: 90%;
-    height: 300px;
+.flex-projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.project-image {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 300px;
-    background-position: center;
-    background-size: cover;
-
-    opacity: 1;
-    transition: ease 0.5s;
-}
-
-.project:first-child {
-    width: 100%;
-}
-
-.project-text {
-    position: absolute;
-    width: 100%;
-    height: 300px;
-    background-color: #f5f5f5;
-    border-style: dashed;
-    border-color: var(--hightlight-color);
-    border-width: 0.25px;
-    top: 0;
-    left: 0;
-    
-    opacity: 0;
-    transition: ease-in-out 0.5s;
-    z-index: 1;
-}
-
-.project-text h2 {
-    font-size: 120%;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.project-text div {
-    text-align: center;
-    border-color: var(--hightlight-color);
-    line-height: 150%;
-    margin: 0 15%;
-    border-style: solid;
-    border-width: 2px;
-    padding: 10px 0px 10px 0px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.project-text div a {
-    color: var(--text-body-color);
-}
-
-.project:hover .project-image {
-    opacity: 0.3;
-}
-
-.project:hover .project-text{
-    opacity: 0.8;
-}
-
+/* set pictures for different projects */
 .project:first-child .project-image {
     background-image: url("../images/project-0.png");
 }
@@ -239,24 +192,157 @@ main {
     background-image: url("../images//project-6.png");
 }
 
-#contact {
+.project {
     position: relative;
-    width: 100%;
-    height: auto;
-    color: var(--nav-color);
-    margin: 50px 0 75px 0;
+    width: 90%;
+    height: 300px;
 }
 
+/* first Project always has full size of screen */
+/* to meet the requirement */
+.project:first-child {
+    width: 100%;
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    top: 0;
+    left: 0;
+
+    background-position: center;
+    background-size: cover;
+
+    opacity: 1;
+    transition: ease 0.5s;
+}
+
+.project-text {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-color: var(--light-background-color);
+    border-style: dashed;
+    border-color: var(--hightlight-color-1);
+    border-width: 0.25px;
+    top: 0;
+    left: 0;
+    
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+    z-index: 1;
+}
+
+.project-text h2 {
+    font-size: 120%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.project-text div {
+    text-align: center;
+    border-color: var(--hightlight-color-1);
+    line-height: 150%;
+    margin: 0 15%;
+    border-style: solid;
+    border-width: 3px;
+    padding: 10px 0px 10px 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.project-text div a {
+    color: var(--dark-text-color);
+}
+
+.project:hover .project-image {
+    opacity: 0.4;
+}
+
+.project:hover .project-text{
+    opacity: 0.8;
+}
+
+/* CONTACT SECTION */
+#contact {
+    background-color: #252934;
+}
+
+#contact h1 {
+    color: var(--bright-text-color);
+}
+
+#contact ul {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#contact ul li {
+    width: 50px;
+    height: 50px;
+    margin: 0px 20px 0 20px;
+}
+
+#contact ul li a img {
+    max-width: 100%;
+    height: auto;
+}
+
+.flex-contact {
+    display: block;
+    width: 80%;
+    margin: 0 10%;
+}
+
+.flex-contact input, .flex-contact textarea {
+    width: 100%;
+
+    background-color: #1e242c;
+    color: var(--bright-text-color);
+
+    font-size: 13pt;
+    outline: none;
+    padding: 10px 15px;
+    margin: 2px 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.flex-contact textarea {
+    height: 200px;
+}
+
+.flex-contact .button-contact {
+    width: 100px;
+    margin: 5px 0;
+    border-width: 1px;
+    border-color: var(--white-background-color);
+    border-style: solid;
+    background: transparent;
+    float: right;
+}
+
+/* WHEN SCREEN CHANGES, SOME ATTRIBUTES HAVE TO CHANGE ALONG AS WELL */
+/* MOBILE-FIRST APPROACH HAVING BEEN USED */
 @media screen and (min-width: 450px) {
+    main {
+        top: 48px;
+    }
+
     header nav {
         position: relative;
+        top: 0;
     }
 
     header nav ul {
         display: flex;
         flex-flow: row;
-        top: 0;
-        background-color: var(--header-color);
+        background-color: var(--dark-background-color);
+        height: 45px;
         visibility: visible;
     }
 
@@ -270,10 +356,6 @@ main {
     
     header h1 {
         visibility: hidden;
-    }
-
-    main {
-        top: var(--nav-position);
     }
 
     .flex-about {
@@ -321,6 +403,7 @@ main {
     .flex-about {
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
         width: 70%;
         margin-left: 15%;
     }
@@ -344,5 +427,10 @@ main {
 
     .project:first-child {
         width: 70%;
+    }
+
+    .flex-contact {
+        width: 70%;
+        margin: 0 15%;
     }
 }
